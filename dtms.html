@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>all digital terrain models</title>
+<meta name="description" content="All DTMs">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff;
+  --ink:#111111;
+  --muted:#4b4b4b;
+  --faint:#6a6a6a;
+  --blue:#1d4ed8;
+  --surface:#f3f6fb;
+  --line:rgba(17,17,17,.14);
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"Figtree",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --pad:clamp(20px,5vw,64px);
+  --max:1180px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+img,canvas{max-width:100%}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.wrap{max-width:var(--max);margin:0 auto;padding-inline:var(--pad)}
+
+/* header */
+.site-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:64px}
+.wordmark{text-decoration:none;font-family:var(--serif);font-weight:400;font-size:1.6rem;letter-spacing:.005em;line-height:1}
+.nav{display:flex;gap:clamp(16px,2.2vw,30px);font-size:.92rem}
+.nav a{text-decoration:none;color:var(--muted);padding:6px 0;transition:color .15s}
+.nav a:hover{color:var(--ink)}
+.nav a.on{color:var(--blue)}
+@media (max-width:980px){
+  .site-header .wrap{flex-wrap:wrap;gap:0;padding-block:12px 0}
+  .nav{width:100%;overflow-x:auto;gap:22px;padding-block:10px;white-space:nowrap;scrollbar-width:none}
+  .nav::-webkit-scrollbar{display:none}
+}
+
+/* sections */
+section.block:first-of-type{padding-top:50px}
+.sec-head{max-width:60rem;margin-bottom:clamp(32px,4.5vw,52px)}
+h2{margin:0;font-family:var(--serif);font-weight:300;font-size:clamp(2.1rem,4.6vw,3.3rem);line-height:1.08;letter-spacing:-.01em}
+.sec-head p{margin:16px 0 0;color:var(--muted);max-width:36rem}
+.sec-head p{max-width:none}
+h3{margin:0;font-family:var(--serif);font-weight:400;font-size:1.5rem;line-height:1.2}
+
+/* HiRISE DTM tiles */
+.tiles{--tile-gap:clamp(24px,3vw,40px);--tile-gap-v:calc(var(--tile-gap) - 6px);column-width:270px;column-gap:var(--tile-gap)}
+.tile{position:relative;break-inside:avoid;margin-bottom:var(--tile-gap-v)}
+
+/* masonry that keeps date order (used by the script) */
+.tiles.masonry{display:flex;column-width:auto;gap:var(--tile-gap);align-items:flex-start}
+.tiles-col{flex:1;min-width:0;display:flex;flex-direction:column;gap:var(--tile-gap-v)}
+.tiles.masonry .tile{margin-bottom:0}
+.tile-media{display:block;border:1px solid var(--line);background:var(--surface);overflow:hidden;transition:border-color .15s}
+.tile-media img{display:block;width:100%;height:auto}
+.tile .tile-name{margin:12px 0 0;font-size:1.3rem;line-height:1.25}
+.tile-name a{text-decoration:none;transition:color .15s}
+.tile-name a::after{content:"";position:absolute;inset:0}   /* makes the whole tile clickable */
+.tile-date{margin:4px 0 0;font-size:.85rem;line-height:1;color:var(--faint)}
+.tile:hover .tile-media{border-color:var(--blue)}
+.tile:hover .tile-name a{color:var(--blue)}
+.see-all{margin:clamp(32px,4vw,52px) 0 0;font-size:1.02rem;text-align:center}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important}
+}
+</style>
+</head>
+
+<body id="top">
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="wordmark" href="index.html" aria-label="Back to home page">dora elalaoui-pinedo</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="index.html#research">research</a>
+      <a href="dtms.html" class="on">digital terrain models</a>
+      <a href="index.html#data">data science projects</a>
+      <a href="index.html#outreach">outreach & community</a>
+      <a href="index.html#contact">contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- dtms section -->
+  <section class="block" id="terrain" aria-labelledby="terrain-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="terrain-title">HiRISE Digital Terrain Models</h2>
+        <p>DTMs released to the Planetary Data System (PDS) I have produced&nbsp;at <a href="...">HiRISE</a>&nbsp;Operations.</p>
+      </div>
+      <div class="tiles" data-limit="9">
+        <article class="tile" data-date="2024-07">
+          <span class="tile-media">
+            <img src="images/Lava_Flow_and_Channels_near_Olympica_Fossae.jpg" alt="DTM" width="1200" height="800">
+          </span>
+          <h3 class="tile-name"><a href="https://www.uahirise.org/dtm/ESP_046700_2005" target="_blank" rel="noopener">Lava Flow and Channels near Olympica Fossae</a></h3>
+          <p class="tile-date">July 2024</p>
+        </article>
+
+        <article class="tile" data-date="2024-08">
+          <span class="tile-media">
+            <img src="images/Rough Terrain in Xanthe Terra.jpg" alt="DTM" width="1200" height="800">
+          </span>
+          <h3 class="tile-name"><a href="https://www.uahirise.org/dtm/ESP_069552_1920" target="_blank" rel="noopener">Rough Terrain in Xanthe Terra</a></h3>
+          <p class="tile-date">August 2024</p>
+        </article>
+
+        <article class="tile" data-date="2024-08">
+          <span class="tile-media">
+            <img src="images/Very Well-Preserved High-Latitude Impact Crater.jpg" alt="DTM" width="1200" height="800">
+          </span>
+          <h3 class="tile-name"><a href="https://www.uahirise.org/dtm/ESP_027751_2420" target="_blank" rel="noopener">Very Well-Preserved High-Latitude Impact Crater</a></h3>
+          <p class="tile-date">August 2024</p>
+        </article>
+
+        <article class="tile" data-date="2024-09">
+          <span class="tile-media">
+            <img src="images/South Polar Layered Deposits Potential Crater Cluster.jpg" alt="DTM" width="1200" height="800">
+          </span>
+          <h3 class="tile-name"><a href="https://www.uahirise.org/dtm/ESP_076582_0970" target="_blank" rel="noopener">South Polar Layered Deposits Potential Crater Cluster</a></h3>
+          <p class="tile-date">September 2024</p>
+        </article>
+        
+        <article class="tile" data-date="2024-10">
+          <span class="tile-media">
+            <img src="images/Nirgal Vallis Bedrock Exposures.jpg" alt="DTM" width="1200" height="800">
+          </span>
+          <h3 class="tile-name"><a href="https://www.uahirise.org/dtm/ESP_074945_1515" target="_blank" rel="noopener">Nirgal Vallis Bedrock Exposures</a></h3>
+          <p class="tile-date">October 2024</p>
+        </article>
+
+        <article class="tile" data-date="2024-10">
+          <span class="tile-media">
+            <img src="images/Doubly-Terraced Elongated Crater in Arcadia Planitia.jpg" alt="DTM" width="1200" height="800">
+          </span>
+          <h3 class="tile-name"><a href="https://www.uahirise.org/dtm/ESP_035651_2210" target="_blank" rel="noopener">Doubly-Terraced Elongated Crater in Arcadia Planitia</a></h3>
+          <p class="tile-date">October 2024</p>
+        </article>
+
+        <article class="tile" data-date="2025-01">
+          <span class="tile-media">
+            <img src="images/Seasonal Polar Cap Monitoring Site.jpg" alt="DTM" width="1200" height="800">
+          </span>
+          <h3 class="tile-name"><a href="https://www.uahirise.org/dtm/ESP_022394_0930" target="_blank" rel="noopener">Seasonal Polar Cap Monitoring Site</a></h3>
+          <p class="tile-date">January 2025</p>
+        </article>
+
+        <article class="tile" data-date="2025-01">
+          <span class="tile-media">
+            <img src="images/Dune Monitoring in Milankovic Crater.jpg" alt="DTM" width="1200" height="800">
+          </span>
+          <h3 class="tile-name"><a href="https://www.uahirise.org/dtm/ESP_062828_2350" target="_blank" rel="noopener">Dune Monitoring in Milankovic Crater</a></h3>
+          <p class="tile-date">January 2025</p>
+        </article>
+
+        <article class="tile" data-date="2025-01">
+          <span class="tile-media">
+            <img src="images/Degraded Crater in Utopia.jpg" alt="DTM" width="1200" height="800">
+          </span>
+          <h3 class="tile-name"><a href="https://www.uahirise.org/dtm/ESP_064494_2250" target="_blank" rel="noopener">Degraded Crater in Utopia</a></h3>
+          <p class="tile-date">January 2025</p>
+        </article>
+
+        <article class="tile" data-date="2025-06">
+          <span class="tile-media">
+            <img src="images/Constriction in Western Arm of Athabasca Valles Flood Lava.jpg" alt="DTM" width="1200" height="800">
+          </span>
+          <h3 class="tile-name"><a href="https://www.uahirise.org/dtm/ESP_049499_1840" target="_blank" rel="noopener">Constriction in Western Arm of Athabasca Valles Flood Lava</a></h3>
+          <p class="tile-date">June 2025</p>
+        </article>
+
+        <article class="tile" data-date="2025-10">
+          <span class="tile-media">
+            <img src="images/Matrona Vallis Channels.jpg" alt="DTM" width="1200" height="800">
+          </span>
+          <h3 class="tile-name"><a href="https://www.uahirise.org/dtm/ESP_082691_1720" target="_blank" rel="noopener">Matrona Vallis Channels</a></h3>
+          <p class="tile-date">October 2025</p>
+        </article>
+
+        <article class="tile" data-date="2026-03">
+          <span class="tile-media">
+            <img src="images/Valley Network in THEMIS Image V27422018.jpg" alt="DTM" width="1200" height="800">
+          </span>
+          <h3 class="tile-name"><a href="https://www.uahirise.org/dtm/ESP_033682_2235" target="_blank" rel="noopener">Valley Network in THEMIS Image V27422018</a></h3>
+          <p class="tile-date">March 2026</p>
+        </article>
+
+        <article class="tile" data-date="2026-02">
+          <span class="tile-media">
+            <img src="images/Dune Field.jpg" alt="DTM" width="1200" height="800">
+          </span>
+          <h3 class="tile-name"><a href="https://www.uahirise.org/dtm/ESP_088070_2535" target="_blank" rel="noopener">Dune Field</a></h3>
+          <p class="tile-date">February 2026</p>
+        </article>
+
+        <article class="tile" data-date="2026-02">
+          <span class="tile-media">
+            <img src="images/Central Peak of Crater.jpg" alt="DTM" width="1200" height="800">
+          </span>
+          <h3 class="tile-name"><a href="https://www.uahirise.org/dtm/PSP_009561_2325" target="_blank" rel="noopener">Central Peak of Crater</a></h3>
+          <p class="tile-date">February 2026</p>
+        </article>
+
+        <article class="tile" data-date="2026-05">
+          <span class="tile-media">
+            <img src="images/Huo Hsing Vallis.jpg" alt="DTM" width="1200" height="800">
+          </span>
+          <h3 class="tile-name"><a href="https://www.uahirise.org/dtm/PSP_003495_2065" target="_blank" rel="noopener">Huo Hsing Vallis</a></h3>
+          <p class="tile-date">May 2026</p>
+        </article>
+
+        <article class="tile" data-date="2026-05">
+          <span class="tile-media">
+            <img src="images/Mawrth Vallis Outcrops.jpg" alt="DTM" width="1200" height="800">
+          </span>
+          <h3 class="tile-name"><a href="https://www.uahirise.org/dtm/PSP_007533_2055" target="_blank" rel="noopener">Mawrth Vallis Outcrops</a></h3>
+          <p class="tile-date">May 2026</p>
+        </article>
+
+        <article class="tile" data-date="2026-06">
+          <span class="tile-media">
+            <img src="images/Gullied Crater.jpg" alt="DTM" width="1200" height="800">
+          </span>
+          <h3 class="tile-name"><a href="https://www.uahirise.org/dtm/ESP_049807_1270" target="_blank" rel="noopener">Gullied Crater</a></h3>
+          <p class="tile-date">June 2026</p>
+        </article>
+
+      </div>
+      <p class="see-all"><a class="link" href="#top">back to top</a></p>
+    </div>
+  </section>
+
+</main>
+
+<script>
+(function(){
+  "use strict";
+  var wrap = document.querySelector(".tiles");
+  if(!wrap) return;
+
+  var tiles = Array.prototype.slice.call(wrap.querySelectorAll(".tile"));
+
+  // sort by data-date
+  tiles.sort(function(a,b){
+    return (b.getAttribute("data-date")||"").localeCompare(a.getAttribute("data-date")||"");
+  });
+
+  var current = 0;
+  function layout(force){
+    var gap = parseFloat(getComputedStyle(wrap).columnGap) || 32;
+    var n = Math.max(1, Math.floor((wrap.clientWidth + gap) / (270 + gap)));
+    if(n === current && !force) return;
+    current = n;
+
+    wrap.classList.add("masonry");
+    wrap.textContent = "";
+    var columns = [];
+    for(var i=0;i<n;i++){
+      var c = document.createElement("div");
+      c.className = "tiles-col";
+      wrap.appendChild(c);
+      columns.push(c);
+    }
+    tiles.forEach(function(t){
+      var shortest = columns[0];
+      columns.forEach(function(c){ if(c.offsetHeight < shortest.offsetHeight) shortest = c; });
+      shortest.appendChild(t);
+    });
+  }
+
+  layout(true);
+  window.addEventListener("load", function(){ layout(true); });
+  var timer;
+  window.addEventListener("resize", function(){
+    clearTimeout(timer);
+    timer = setTimeout(function(){ layout(false); }, 120);
+  });
+})();
+</script>
+</body>
+</html>
