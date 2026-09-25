@@ -96,12 +96,13 @@ a{color:inherit}
 @media (prefers-reduced-motion:reduce){.hero-copy > *{animation:none}}
 
 /* sections */
-section.block{padding-block:clamp(72px,10vw,132px)}
+section.block{padding-block:clamp(48px,6vw,88px)}
 section.block + section.block{border-top:1px solid var(--line)}
 .sec-head{max-width:60rem;margin-bottom:clamp(32px,4.5vw,52px)}
 h2{margin:0 0 16px;font-family:var(--serif);font-weight:300;font-size:clamp(2.1rem,4.6vw,3.3rem);line-height:1.08;letter-spacing:-.01em}
 .sec-head h2{margin-bottom:0}
 .sec-head p{margin:16px 0 0;color:var(--muted);max-width:36rem}
+.sec-head p{max-width:none}
 h3{margin:0;font-family:var(--serif);font-weight:400;font-size:1.5rem;line-height:1.2}
 .link{color:var(--blue);text-underline-offset:4px;text-decoration-thickness:1px}
 .link:hover{text-decoration-thickness:2px}
@@ -126,10 +127,17 @@ h3{margin:0;font-family:var(--serif);font-weight:400;font-size:1.5rem;line-heigh
 .see-all{margin:clamp(32px,4vw,52px) 0 0;font-size:1.02rem;text-align:center}
 
 /* data science projects */
-.proj-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:clamp(28px,3.5vw,48px)}
+.proj-grid{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:clamp(28px,3.5vw,48px);
+}
 .proj{position:relative}
 .proj-media{display:block;border:1px solid var(--line);background:var(--surface);overflow:hidden;transition:border-color .15s}
-.proj-media img{display:block;width:100%;height:auto}
+.proj-media img{display:block;width:100%;height:300px;object-fit:cover}
 .ph{aspect-ratio:3/2;display:grid;place-items:center;background:linear-gradient(135deg,#eef3fc,#d5e1f7);color:#4a6392;font-size:.86rem}
 .proj h3{margin-top:16px}
 .proj h3 a{text-decoration:none}
@@ -197,7 +205,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
     <nav class="nav" aria-label="Sections">
       <a href="#research">research</a>
       <a href="#terrain">digital terrain models</a>
-      <a href="#data">data science projects</a>
+      <a href="#data"> data science projects</a>
       <a href="#outreach">outreach & community</a>
       <a href="#contact">contact</a>
     </nav>
@@ -217,7 +225,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
         <p class="lede"> Hello! I'm Dora, a senior undergraduate student at the University of Arizona studying Planetary Geosciences and Statistics & Data Science.
                         I am interested in surface processes across Mars, Earth, and Europa — including geomorphology, mineralogy, and the evolution of ice sheets and glaciers. 
                         I am enjoy using imaging spectroscopy, remote sensing, field geology, and change detection techniques, along with data science and machine learning methods, to study active planetary surfaces and
-                        assess planetary habitability.</p>
+                        assess planetary habitability. I am also interested in planetary science mission instrumentation.</p>
       </div>
 
       <figure class="hero-photo">
@@ -237,14 +245,14 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
           <h3>Cataloging Strata in the South Polar Layered Deposits (SPLD) of Mars</h3>
           <p class="meta">University of Arizona, Lunar and Planetary Laboratory. August 2026 to present.</p>
           <p class="meta">Undergraduate Student Researcher, advised by <a href="https://lpl.arizona.edu/faculty/shane-byrne" target="_blank" rel="noopener">Dr. Shane Byrne</a>.</p>          
-          <p class="desc">Description</p>
+          <p class="desc">I am working on producing HiRISE digital terrain models of the SPLD to catalog exposed strata using GIS. We hope to constrain the recent climate expressed in geomorphic and geological features.</p>
         </article>
 
         <article class="paper">
           <h3>Characterizing Changes in Morphology and Mineralogy of Interdunes at Olympia Undae, Mars</h3>
           <p class="meta">University of Arizona, Lunar and Planetary Laboratory. June 2026 to August 2026.</p>
           <p class="meta">REU Intern, advised by <a href="https://www.seti.org/people/janice-bishop/" target="_blank" rel="noopener">Dr. Janice Bishop</a> and <a href="https://www.seti.org/people/lori-fenton/" target="_blank" rel="noopener">Dr. Lori Fenton</a>.</p>
-          <p class="desc">Description </p>
+          <p class="desc">I analyzed morphological and mineralogical patterns in Martian interdunes using CRISM and HiRISE data. I identified spectral evidence of iron sulfates in interdunes, including potential rozenite, contributing to the efforts to uncover aqueous processes shaping Mars's north polar climate history.</p>
           <a class="link" href="https://gsameetings.secure-platform.com/connects26/solicitations/103015/sessiongallery/schedule/items/96255/application/20070" target="_blank" rel="noopener">recent abstract</a>
         </article>
 
@@ -252,7 +260,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
           <h3>Enigmatic Polar Pits in the North Polar Layered Deposits of Mars: Mapping and Temporal Analysis</h3>
           <p class="meta">University of Arizona, Lunar and Planetary Laboratory. August 2023 to May 2025.</p>
           <p class="meta">NASA Space Grant Intern, advised by <a href="https://lpl.arizona.edu/research-scientists/sarah-sutton" target="_blank" rel="noopener">Dr. Sarah Sutton</a>.</p>          
-          <p class="desc">Description</p>
+          <p class="desc">I investigated meter-scale pits in the NPLD using HiRISE images. I located and mapped over 2,000 polar pits using QGIS and created digital terrain models to analyze potentially changing pits over time. Identifying evidence of active surface processes and potential faults in the NPLD advances our understanding of Mars's climate history.</p>
           <a class="link" href="https://elib.dlr.de/217159/1/2486.pdf" target="_blank" rel="noopener">recent abstract</a>
         </article>
       </div>
@@ -264,7 +272,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
     <div class="wrap">
       <div class="sec-head">
         <h2 id="terrain-title">HiRISE Digital Terrain Models</h2>
-        <p>DTMs released to the Planetary Data System (PDS) I have produced at <a href="https://hirise.lpl.arizona.edu/" target="_blank" rel="noopener">HiRISE</a> Operations.</p>
+        <p>DTMs released to the Planetary Data System (PDS) I have produced&nbsp;at <a href="...">HiRISE</a>&nbsp;Operations.</p>
       </div>
       <div class="tiles" data-limit="9">
         <article class="tile" data-date="2024-07">
@@ -410,9 +418,10 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
 
   <!-- data science projects section -->
   <section class="block" id="data" aria-labelledby="data-title">
-    <div class="wrap">
+    <div class="wrap split">
       <div class="sec-head">
         <h2 id="data-title">Data Science Projects</h2>
+        <p>Although predominately related to music, here are a few data science class projects I have worked on.</p>
       </div>
       <ul class="proj-grid">
         <li class="proj">
@@ -421,25 +430,25 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
           <p>I built a data pipeline (ETL) for a class project that combines Billboard Hot 100 charts, Spotify audio features, and Grammy nominations from 2015 to 2025 into one PostgreSQL database. It can answer questions like whether Grammy winners chart better and which audio features go with commercial success.</p>
         </li>
         <li class="proj">
-          <span class="proj-media"><img src="images/foundintranslation.jpeg" alt="FoundinTranslation" width="1200" height="800"></span>
+          <span class="proj-media"><img src="images/foundintranslation.jpeg" alt="FoundinTranslation" width="1200" height="800" style="object-position:center 10%"></span>
             <h3><a href="https://github.com/doraep/FoundinTranslation/blob/main/README.md" target="_blank" rel="noopener">FoundinTranslation</a></h3>
           <p>I led the creation of an R package with classmates that finds the lyrics of a requested song from Genius.com, cleans the lyrics, and translates them into over 100 languages, with a Shiny app for side-by-side comparison.</p>
         </li>
       </ul>
     </div>
+  </section>
 
   <!-- outreach and community section -->
   <section class="block" id="outreach" aria-labelledby="outreach-title">
     <div class="wrap split">
       <div class="sec-head">
         <h2 id="outreach-title">Outreach & Community</h2>
-        <p>I enjoy planning and participating in science outreach events.</p>
+        <p>For the past two and a half years, I have served as President of the University of Arizona SACNAS Chapter. I organize science outreach at schools in Tucson, collaborate with environmental conservation groups, and guide our chapter meetings with community-building activities.</p>
       </div>
       <div>
       <article class="paper">
         <h3>Science Outreach</h3>
-        <p class="meta"> UA SACNAS, 2023 to Present. President of the University of Arizona SACNAS Chapter.</p>
-        <p class="desc">Our SACNAS chapter regularly visits local public schools to talk with students about college and share our own experiences. We also play a game of Science Jeopardy, in both English and Spanish.</p>
+        <p class="desc">We regularly visit underserved public schools to talk with students about college and share our own experiences. We also play a game of Science Jeopardy, in both English and Spanish.</p>
         <ul class="photos photos-3">
     <li>
       <figure>
@@ -463,9 +472,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
     </article>
 
     <article class="paper">
-      <h3>Environmental Conservation Volunteer Efforts</h3>
-      <p class="meta">UA SACNAS, 2023 to Present. President of the University of Arizona SACNAS Chapter.</p>
-      <p class="desc">Our SACNAS chapter participates in annual restoration efforts around Tucson, including cleaning up trash in our Santa Cruz River and planting trees in local neighborhoods.</p>
+      <h3>Environmental Conservation Volunteering</h3>
+      <p class="desc">We participate in annual restoration efforts around Tucson, including cleaning up trash in our Santa Cruz River and planting trees in local neighborhoods.</p>
       <ul class="photos photos-2">
       <li>
       <figure>
@@ -494,7 +502,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
 
       <div class="btns">
         <a class="btn solid" href="mailto:delisaeap@arizona.edu">email</a>
-        <a class="btn ghost" href="CV_DoraElalaouiPinedo_Sep20.pdf" target="_blank" rel="noopener">cv</a>
+        <a class="btn ghost" href="CV_DoraEP_Sep25.pdf" target="_blank" rel="noopener">cv</a>
       </div>
       <div class="social">
         <a href="https://github.com/doraep">GitHub</a>
