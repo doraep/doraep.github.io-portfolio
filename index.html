@@ -146,6 +146,43 @@ h3{margin:0;font-family:var(--serif);font-weight:400;font-size:1.5rem;line-heigh
 .proj:hover .proj-media{border-color:var(--blue)}
 .proj:hover h3 a{color:var(--blue)}
 
+/* highlight */
+.highlight {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 990px;
+  margin: 1.5rem auto;
+  padding: 1rem 1.25rem;
+  background: #f7f7f7;
+  border-radius: 8px;
+}
+
+.highlight img {
+  width:310px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.highlight-text .highlight-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  color: var(--blue);
+  margin: 0 0 0.25rem;
+}
+
+/* stack on phones */
+@media (max-width: 600px) {
+  .highlight {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
 /* research */
 .split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,8fr);gap:clamp(32px,6vw,90px);align-items:start}
 .split .sec-head{position:sticky;top:96px;margin-bottom:0}
@@ -234,6 +271,15 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
       </figure>
     </div>
   </section>
+
+  <!-- highlight section -->
+  <aside class="highlight">
+    <img src="images/nasaadmin.jpg" alt="Dora and NASA Admin Isaacman Speaking">
+    <div class="highlight-text">
+      <p class="highlight-label">Recent Highlight</p>
+      <p>The HiRISE Team invited me to represent them during NASA Administrator Jared Isaacman’s visit to the University of Arizona. I was able to speak one-on-one with the NASA Administrator about the digital terrain models we produce and highlighted how essential HiRISE has been to Mars exploration missions and to advancing our understanding of the red planet! </p>
+    </div>
+  </aside>
 
   <!-- research section -->
   <section class="block" id="research" aria-labelledby="research-title">
