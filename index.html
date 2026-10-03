@@ -158,12 +158,18 @@ h3{margin:0;font-family:var(--serif);font-weight:400;font-size:1.5rem;line-heigh
   border-radius: 8px;
 }
 
+.highlight > a {
+  flex: 0 0 310px; 
+  display: block;
+  text-decoration: none;
+}
+
 .highlight img {
-  width:310px;
+  display: block;
+  width: 310px;
   height: 220px;
   object-fit: cover;
   border-radius: 6px;
-  flex-shrink: 0;
 }
 
 .highlight-text .highlight-label {
@@ -279,7 +285,6 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
     </a>
     <div class="highlight-text">
       <p class="highlight-label">Recent Highlight</p>
-      <h3>Meeting NASA Administrator</h3>
       <p>The HiRISE Team invited me to represent them during NASA Administrator Jared Isaacman’s visit to the University of Arizona. I was able to speak one-on-one with the NASA Administrator about the digital terrain models we produce and highlighted how essential HiRISE has been to Mars exploration missions and to advancing our understanding of the red planet! </p>
     </div>
   </aside>
